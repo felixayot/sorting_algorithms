@@ -10,6 +10,8 @@ void selection_sort(int *array, size_t size)
 {
 size_t i, j, min_index;
 int tmp;
+if (array == NULL)
+return;
 for (i = 0; i < size - 1; i++)
 {
 min_index = i;
