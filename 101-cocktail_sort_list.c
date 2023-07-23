@@ -8,7 +8,6 @@
 listint_t *swap_node(listint_t *node, listint_t **list)
 {
 listint_t *back = node->prev, *current = node;
-/*NULL, 19, 48, 9, 71, 13, NULL*/
 back->next = current->next;
 if (current->next)
 current->next->prev = back;
@@ -32,8 +31,8 @@ void cocktail_sort_list(listint_t **list)
 {
 listint_t *node;
 int swapped = 1;
-/*if (*list == '\0' || (*list) == '\0' || (*list)->next == '\0') */
-/* return; */
+if (*list == NULL || (*list) == NULL || (*list)->next == NULL)
+return;
 node = *list;
 while (swapped)
 {

@@ -51,6 +51,8 @@ void radix_sort(int *array, size_t size)
 {
 int exp, maximum = 0;
 int *output = NULL;
+if (array == NULL || size < 2)
+return;
 maximum = getmax(array, size);
 output = malloc(size * sizeof(int));
 if (output == NULL)

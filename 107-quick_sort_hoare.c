@@ -72,5 +72,7 @@ recursive_qs(array, pivot_point + 1, high, size);
  */
 void quick_sort_hoare(int *array, size_t size)
 {
+if (array == NULL || size < 2)
+return;
 recursive_qs(array, 0, size - 1, size);
 }
