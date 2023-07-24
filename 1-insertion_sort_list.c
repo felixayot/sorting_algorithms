@@ -8,8 +8,6 @@
 listint_t *swap_node(listint_t *node, listint_t **list)
 {
 listint_t *back = node->prev, *current = node;
-/* NULL, 19, 48, 9, 71, 13, NULL */
-
 back->next = current->next;
 if (current->next)
 current->next->prev = back;

@@ -20,7 +20,7 @@ tmp = *num1;
  * @low: first array element
  * @high: last array element
  * @size: size of the array
- * Return: the position of the last element sorted
+ * Return: the position(index) of the chosen pivot of the array
  */
 int lomuto_partition(int *array, int low, int high, size_t size)
 {

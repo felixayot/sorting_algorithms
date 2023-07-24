@@ -20,7 +20,8 @@ tmp = *num1;
  * @low: first array element
  * @high: last array element
  * @size: size of the array
- * Return: the position of the last element sorted
+ * Return: the position(index) of the chosen pivot in the array,
+ * -1 (Failure)
  */
 int hoare_partition(int *array, int low, int high, size_t size)
 {
@@ -31,7 +32,7 @@ while (1)
 {
 
 do {
-i = i + 1;
+i++;
 } while (array[i] < pivot_point);
 do {
 j--;
@@ -41,6 +42,7 @@ return (j);
 swap(&array[i], &array[j]);
 print_array(array, size);
 }
+return (-1);
 }
 
 /**
@@ -53,7 +55,7 @@ print_array(array, size);
  */
 void recursive_qs(int *array, int low, int high, size_t size)
 {
-int pivot_point = 0;
+int pivot_point;
 if (low < high)
 {
 pivot_point = hoare_partition(array, low, high, size);
