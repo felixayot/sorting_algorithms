@@ -47,7 +47,7 @@ struct deck_node_s *next;
 } deck_node_t;
 
 int _strcmp(const char *s1, const char *s2);
-int get_card_position(deck_node_t *node);
+int get_card_value(deck_node_t *card);
 deck_node_t *swap_card(deck_node_t *card, deck_node_t **deck);
 void insertion_sort_deck(deck_node_t **deck);
 void sort_deck(deck_node_t **deck);

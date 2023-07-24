@@ -3,7 +3,8 @@
  * _strcmp - compares two strings
  * @s1: first string
  * @s2: second string
- * Return: 0 s1 and s2 are equal, 1 not equal
+ * Return: 0 s1 and s2 are equal, +ve byte difference(s1 > s2),
+ * -ve byte difference(s1 < s2).
  */
 int _strcmp(const char *s1, const char *s2)
 {
@@ -25,30 +26,39 @@ return (r);
 }
 
 /**
- * get_card_position - gets the position based on card you put in
- * @node: node struct to the card
+ * get_card_value - gets the value based on card you put in
+ * @card: node struct to the card
  * Return: the card's position
  */
-int get_card_position(deck_node_t *node)
+int get_card_value(deck_node_t *card)
 {
-int value;
-
-value = (*node).card->value[0] - '0';
-if (value < 50 || value > 57)
-{
-if (_strcmp((*node).card->value, "Ace") == 1)
-value = 1;
-else if (_strcmp((*node).card->value, "10") == 1)
-value = 10;
-else if (_strcmp((*node).card->value, "Jack") == 1)
-value = 11;
-else if (_strcmp((*node).card->value, "Queen") == 1)
-value = 12;
-else if (_strcmp((*node).card->value, "King") == 1)
-value = 13;
-}
-value += (*node).card->kind * 13;
-return (value);
+if (_strcmp(card->card->value, "Ace") == 0)
+return (0);
+if (_strcmp(card->card->value, "1") == 0)
+return (1);
+if (_strcmp(card->card->value, "2") == 0)
+return (2);
+if (_strcmp(card->card->value, "3") == 0)
+return (3);
+if (_strcmp(card->card->value, "4") == 0)
+return (4);
+if (_strcmp(card->card->value, "5") == 0)
+return (5);
+if (_strcmp(card->card->value, "6") == 0)
+return (6);
+if (_strcmp(card->card->value, "7") == 0)
+return (7);
+if (_strcmp(card->card->value, "8") == 0)
+return (8);
+if (_strcmp(card->card->value, "9") == 0)
+return (9);
+if (_strcmp(card->card->value, "10") == 0)
+return (10);
+if (_strcmp(card->card->value, "Jack") == 0)
+return (11);
+if (_strcmp(card->card->value, "Queen") == 0)
+return (12);
+return (13);
 }
 
 /**
@@ -92,13 +102,13 @@ while (node)
 {
 if (node->prev)
 {
-value_prev = get_card_position((node->prev));
-value_current = get_card_position(node);
+value_prev = get_card_value((node->prev));
+value_current = get_card_value(node);
 }
 while ((node->prev) && (value_prev > value_current))
 {
-value_prev = get_card_position((node->prev));
-value_current = get_card_position(node);
+value_prev = get_card_value((node->prev));
+value_current = get_card_value(node);
 node = swap_card(node, deck);
 
 }
@@ -114,5 +124,7 @@ node = node->next;
  */
 void sort_deck(deck_node_t **deck)
 {
+if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
+return;
 insertion_sort_deck(deck);
 }
