@@ -27,7 +27,7 @@ int hoare_partition(int *array, int low, int high, size_t size)
 {
 int i = low - 1;
 int j = high + 1;
-int pivot_point = array[(int)floor((high - low) / 2) + low];
+int pivot_point = array[low];
 while (1)
 {
 
@@ -59,7 +59,7 @@ int pivot_point;
 if (low < high)
 {
 pivot_point = hoare_partition(array, low, high, size);
-recursive_qs(array, low, pivot_point - 1, size);
+recursive_qs(array, low, pivot_point, size);
 recursive_qs(array, pivot_point + 1, high, size);
 }
 }
